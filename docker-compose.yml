@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    build: .
+    container_name: node-test-web
+    command: nodemon -e js,html index.js
+    ports:
+      - 9000:80
+    volumes:
+      - .:/src
+      - /src/node_modules
+    environment:
+      NODE_ENV: dev
