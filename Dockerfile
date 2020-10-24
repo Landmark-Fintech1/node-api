@@ -1,14 +1,11 @@
-FROM node:13-alpine-3.12
+FROM node:alpine3.10
 
-RUN echo http://repository.fit.cvut.cz/mirrors/alpine/v3.12/main > /etc/apk/repositories; \
-    echo http://repository.fit.cvut.cz/mirrors/alpine/v3.12/community >> /etc/apk/repositories
-
-RUN apk --update add npm
-RUN npm install -g nodemon
+RUN yarn global add nodemon
 
 WORKDIR /src
+
 COPY . .
 
-RUN npm install
+RUN yarn install
 
 CMD ["node", "index.js"]
