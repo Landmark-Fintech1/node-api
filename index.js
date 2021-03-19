@@ -1,12 +1,6 @@
-/*
- * simple api with no CRUD operation
- * this nodejs app must be ran via docker container
- * with auto files and directories update
- */
-
 const express = require('express')
 const app = express()
-const db = require('./database.js')
+const db = require('./src/database.js')
 
 app.get('/', (req, res, next) => {
   res.json({ message: "Welcome to the API." })
