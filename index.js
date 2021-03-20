@@ -1,13 +1,8 @@
 const express = require('express')
 const app = express()
-const db = require('./src/database.js')
 
 app.get('/', (req, res, next) => {
   res.json({ message: "Welcome to the API." })
-})
-
-app.get('/products', async (req, res, next) => {
-  res.json({ data: await db.products })
 })
 
 app.use((req, res, next) => {
