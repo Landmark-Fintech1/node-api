@@ -1,8 +1,17 @@
 const express = require('express')
 const app = express()
+const db = require('./db')
 
 app.get('/', (req, res, next) => {
   res.json({ message: "Welcome to the API." })
+})
+
+app.get('/products', async (req, res, next) => {
+  try {
+    res.json({ products: await db.products })
+  } catch {
+    res.json({ error: 'database is not connected!!!' })
+  }
 })
 
 app.use((req, res, next) => {
@@ -34,7 +43,7 @@ app.use((error, req, res, next) => {
 
 })
 
-const PORT = process.env.PORT || 9001
+const PORT = process.env.PORT || 9008
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })

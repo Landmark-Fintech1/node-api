@@ -2,12 +2,12 @@
 
 const request = require('supertest');
 const assert = require('assert');
-const app1 = require('../index.js');
+const api = require('../index.js');
 const random_test = require('../random_test.js');
 
 describe('GET /', () => {
   it('respond with json', (done) => {
-    request(app1)
+    request(api)
       .get('/')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
